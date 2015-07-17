@@ -1,0 +1,12 @@
+# Site settings
+title: Monotonically Unstable
+email: dor.a2003@gmail.com
+description: "My programming blog, where i write about thoughts and ideas that rise during work."
+baseurl: ""
+url: "http://yourdomain.com"
+twitter_username: jekyllrb
+github_username:  dorav
+
+# Build settings
+markdown: kramdown
+permalink: pretty

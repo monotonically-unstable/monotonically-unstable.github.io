@@ -1,186 +1,20 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+---
+layout: default
+---
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+<div class="home">
 
-    <title>Monotonically-unstable.GitHub.io by monotonically-unstable</title>
-  </head>
+  <h1>Posts</h1>
 
-  <body>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 
-    <header>
-      <div class="container">
-        <h1>Monotonically-unstable.GitHub.io</h1>
-        <h2></h2>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
-        <section id="downloads">
-          <a href="https://github.com/monotonically-unstable" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
-
-    <div style="direction:rtl" class="container">
-      <section id="main_content">
-        <h2>
-<a id="intro" class="anchor" href="#intro" aria-hidden="true"><span class="octicon octicon-link">אני רק אשנה את הערך ברירת מחדל ו… שיט, למה המערכת קורסת בלולאה?</span></a></h2>
-
-<p>אתחיל משאלה פשוטה, מה נמצא בראש רשימת הדברים שמעצבנים אתכם שאתם רואים קוד? תשובות נפוצות:</p>
-<ul>
-    <li>חוסר יעילות</li>
-    <li>שכפול קוד</li>
-    <li>אין בדיקות</li>
-    <li>אין תיעוד</li>
-</ul>
-
-<p>ואוהו כמה זמן אנחנו עובדים כדי שהקוד שלנו יהיה יעיל, בלי שכפולי קוד, עם תיעוד טוב ועם בדיקות. אבל לפעמים יש שיטות לא נכונות למניעת שכפולי קוד, או לפחות מקומות בהם אנחנו נגרום ליותר נזק בטווח הרחוק.
-אמשיך ואומר שבנושא הספציפי הזה, זוהי דעתי בלבד. דיברתי על הנושא עם מספיק אנשים אחרים ובדקתי במספיק מקומות באינטרנט, קיימים אנשים לא מסכימים איתי. באסה להם.
-</p>
-<p>
-נתבונן בקוד הבא:
-</p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'><span style='color:#e66170; font-weight:bold; '>class</span> Something
-<span style='color:#b060b0; '>{</span>
-<span style='color:#e66170; font-weight:bold; '>public</span><span style='color:#e34adc; '>:</span>
-    Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_<span style='color:#d2cd86; '>)</span>
-    <span style='color:#b060b0; '>:</span> isInteresting<span style='color:#d2cd86; '>(</span>isInteresting_<span style='color:#d2cd86; '>)</span>
-    <span style='color:#b060b0; '>{</span>
-    <span style='color:#b060b0; '>}</span>
-<span style='color:#e66170; font-weight:bold; '>private</span><span style='color:#e34adc; '>:</span>
-    <span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting<span style='color:#b060b0; '>;</span>
-<span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>;</span>
-</pre>
 </div>
-
-<p>אבל ברור שמה שאני הולך לעשות יהיה מעניין! (למעט מקרים ספציפיים) לכן אני אקל על עצמי ואכתוב:</p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_ <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-</pre></div>
-
-<p>כך לא אצטרך להגדיר כל פעם מחדש שאני עובד על משהו מעניין.</p>
-
-<h2>
-<a id="the_problem" class="anchor" href="#the_problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>הבעיה</h2>
-
-<p>סיפורינו מתחיל אחרי שלוש שנות עבודה של מספר מתכנתים. כמובן שהם כולם עבדו על הרבה מאוד דברים בשלוש שנים הללו, חלקם מעניינים יותר, חלקם פחות. רצתה יד הגורל (במקרה זה, היד של הבוס שלכם) למצוא את כל הדברים הלא מעניינים שעבדתם עליהם... סתם, רצו לדעת מהם אותם הדברים</p>
-
-<p>"אין בעיה! תן לי שלוש דקות תמימות", כך שמעתי את איגור האומלל אומר לראש צוות שלו, בדיוק לפני שהוא פרץ בבכי תמרורים. "מה קרה?" שאלתי את איגור האומלל (זה שם המשפחה שלו, הוא בעצם בחור די שמח). בין קינוח אף להתייפחות איגור ניסה להסביר שעבדנו על למעלה מ 1000 דברים שהשתמשו ב Something. עכשיו לך תדע איזה מהם מעניינים ואיזה לא.</p>
-
-<h2>
-<a id="the_solution" class="anchor" href="#the_solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>הצעת פתרון</h2>
-
-<p>אוקיי, להירגע, זה רק קוד, רובו לא נושך (בדרך כלל), נמצא פתרון.<br>
-רצינו לעשות שימוש ביכולת של ה IDE שנקראת find all references (כלומר תמצא לי את כל מי שמשתמש בבנאי..), קיבלנו אלף תוצאות, זה הזכיר לי תמונה ממש מעצבנת שראיתי פעם:
-</p>
-
-<img src="images/find_number_8.jpg"/>
-
-<p>פתרון אחר שרצינו לנסות הוא לחפש ביטוי רגולרי בסגנון: Something.*false… התוכנית עבדה.. ish (כלומר עבדה-בערך). </P>
-
-<ul>
-    <li>דבר ראשון שהיינו צריכים לעשות, הוא לסנן את כל סוגי הקבצים שלא רלוונטים, אחר כך, לסנן הערות, בדיקות, סתם טקסטים שבמקרה התאימו וכו', זה לקח זמן. </li>
-    <li>בעיה נוספת היא שהביטוי הרגולרי פשוט לא נכון, לדוגמה, הוא לא יעלה על המקרה הבא:</li>
-</ul>
-        <div style="direction:ltr">
-        <pre style='color:#d1d1d1;background:#000000;'><span style='color:#e66170; font-weight:bold; '>bool</span> notInteresting <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>false</span><span style='color:#b060b0; '>;</span>
-Something very<span style='color:#d2cd86; '>(</span>notInteresting<span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-</pre></div>
-
-<p>
-    טוב, אז בכל זאת, מה עושים? ובכן, קצת פסיכולוגיה. בני אדם הם אנשים עצלנים. מתכנתים, כידוע, הם זן מיוחד של אנשים, בלי לדעת יותר מדי ביולוגיה: מתכנתים הם <b>עצלנים מאוד</b>. מה זה אומר ולמה זה עוזר לנו? 
-זה עוזר לנו בקטע מאוד חשוב, מתכנת כמעט תמיד יכתוב: </p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something interesting<span style='color:#b060b0; '>;</span>
-</pre></div>
-
-<p>במקום לכתוב:</p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something interesting<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-</pre></div>
-
-<p>איגור יצא מגדרו, הוא ידע ישר מה לעשות. במקום להגדיר בנאי יחיד, יש להגדיר שני בנאים:</p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>:</span> isInteresting <span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span> <span style='color:#b060b0; '>}</span>
-Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>:</span> isInteresting <span style='color:#d2cd86; '>(</span>isInteresting_<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span> <span style='color:#b060b0; '>}</span>
-</pre></div>
-
-<p>הסיבה שאיגור האומלל היה כל כך שמח היא שעכשיו הוא יכול לשתמש ביכולת המובנית של ה - IDE שלו "find all references" על מנת למצוא את כל השימושים בבנאי השני. ואכן, איגור הצליח לצמצם את מספר השימושים ממספר אלפים למספר בודד של שימושים. תחשבו על התמונה למעלה, היא אותו הדבר, רק שהיו אומרים שאם בכלל קיים המספר 8, הוא בשורה הראשונה.</p>
-
-<p>בכל אופן, שימוש בערכי ברירת מחדל חוסך מאיתנו סוג של שכפול קוד, אבל הקוראים יכולים לראות מה ערך ברירת המחדל. נובעות מכך הבעיות הבאות:</p>
-
-<ol>
-    <li>זו לא הדרך הנקיה ביותר להצהיר על מה ערך הברירת מחדל יהיה (בשביל זה קיים תיעוד וקיימות בדיקות)</li>
-    <li>בעיה נוספת, פרקטית יותר - כשנרצה לשנות את ערך ברירת המחדל, לא יספיק לנו לבצע מחדש לינקוז' (linkage) של הספריה שלנו, אלא נצטרך לקמפל מחדש גם את כל התלויות.</li>
-    <li>הרבה פעמים, לפחות אצלינו, ערך ברירת המחדל נלקח מקובץ, ע"י ספרית util פנימית כלשהי. הקוד בערך כך (עם ערכי ברירת מחדל):</li>
-</ol>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_ <span style='color:#d2cd86; '>=</span> FileConfigurer<span style='color:#b060b0; '>::</span>GetDefaultInteresting<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-</pre></div>
-
-<p style="padding-right:2em">עכשיו כל הקוראים צריכים להכיר את FileConfigurer ואת ה include שלו… זה לא דבר שהופך את איגור האומלל לשמח יותר, תשמחו עלי, ניסיתי.</p>
-
-<p>בנוסף על כך, בגלל מגבלה של ++c, אם נרצה להוסיף פרמטר ללא ברירת מחדל לפונקציה, הוא יצטרך להופיע לפני הפרמטר עם הברירת מחדל. לא אכנס פה לפרטי פרטים אבל אציין שזה מעיק בסיטואציות מסוימות.</p>
-
-<h2>
-<a id="the_extended_problem" class="anchor" href="#the_extended_problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>וריאציה נוספת של הבעיה</h2>
-
-<p>קצת בנושא פרמטרים מרובים, תחשבו על הפונקציה הבאה:</p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isExciting <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isWonderful <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isTasty <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isGr8 <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isLovely <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-</pre></div>
-
-<p>אני יודע מה עבר לכם בראש, זו פונקציה שהופכת את איגור לאומלל. אתם צודקים. (אגב, אתם צודקים גם מעוד סיבות, המחלקה הזו כנראה עוברת על Single Responsibility Principle)
-</p>
-<p>
-במקרה כזה, לא נרצה להוסיף פונקציות ככל שמספר הפרמטרים גדל (כי מספר הפונקציות גדל הרבה יותר מהר), מה גם שכמו בדוגמה הזו, זה לא ממש אפשרי (ניתן לייצר רק בנאי אחד שמקבל רק פרמטר בוליאני אחד, יותר מזה והקומפיילר לא ידע לאיזה בנאי לפנות)
-</p>
-
-<p>הפתרון המוצע הוא להוסיף Parameter Object. במקרה שלנו, כך יראה הקוד (כולל שימושים)</p>
-
-<div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'><span style='color:#e66170; font-weight:bold; '>class</span> Something
-<span style='color:#b060b0; '>{</span>
-<span style='color:#e66170; font-weight:bold; '>public</span><span style='color:#e34adc; '>:</span>
-    <span style='color:#e66170; font-weight:bold; '>struct</span> Configurations
-    <span style='color:#b060b0; '>{</span>
-        <span style='color:#e66170; font-weight:bold; '>bool</span> isExciting<span style='color:#b060b0; '>;</span>
-        <span style='color:#e66170; font-weight:bold; '>bool</span> isWonderful<span style='color:#b060b0; '>;</span>
-        <span style='color:#e66170; font-weight:bold; '>bool</span> isTasty<span style='color:#b060b0; '>;</span>
-        <span style='color:#e66170; font-weight:bold; '>bool</span> isGr8<span style='color:#b060b0; '>;</span>
-        <span style='color:#e66170; font-weight:bold; '>bool</span> isLovely<span style='color:#b060b0; '>;</span>
-    <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>;</span>
-
-    <span style='color:#e66170; font-weight:bold; '>static</span> Configurations getDefaultConfiguration<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-
-    Something<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-    Something<span style='color:#d2cd86; '>(</span>Configurations confs<span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-<span style='color:#e66170; font-weight:bold; '>private</span><span style='color:#e34adc; '>:</span>
-    Configurations<span style='color:#b060b0; '>;</span>
-<span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>;</span>
-</pre>
-
-<pre style='color:#d1d1d1;background:#000000;'>Something withDefaults<span style='color:#b060b0; '>;</span>
-
-Something<span style='color:#b060b0; '>::</span>Configurations myConf <span style='color:#d2cd86; '>=</span> Something<span style='color:#b060b0; '>::</span>getDefaultConfiguration<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-myConf<span style='color:#d2cd86; '>.</span>isTasty <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#b060b0; '>;</span>
-Something withoutDefaults<span style='color:#d2cd86; '>(</span>myConf<span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
-</pre></div>
-
-      </section>
-    </div>
-
-    
-  </body>
-</html>
