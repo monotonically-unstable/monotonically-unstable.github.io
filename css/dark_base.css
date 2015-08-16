@@ -116,17 +116,19 @@ blockquote {
 }
 
 pre {
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 10px;
+  background-color: #000;
+  border: 1px solid #d5d5e9;
+  padding: 8px 12px;
   font-size: 14px;
   color: #b5e853;
+  font-size: 15px;
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   text-wrap: normal;
   overflow: auto;
   overflow-y: hidden;
+  direction: ltr;
 }
 
 table {
@@ -192,9 +194,8 @@ hr {
    a, a:hover, a:visited
 */
 
-a {
-  color: #63c0f5;
-}
+a         { color: #63c0f5; text-decoration: underline; }
+a:hover   { color: #1ACA66; }
 
 /* Clearfix */
 

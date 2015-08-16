@@ -31,7 +31,7 @@ categories: best_practices
 </p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'><span style='color:#e66170; font-weight:bold; '>class</span> Something
+<pre><span style='color:#e66170; font-weight:bold; '>class</span> Something
 <span style='color:#b060b0; '>{</span>
 <span style='color:#e66170; font-weight:bold; '>public</span><span style='color:#e34adc; '>:</span>
     Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_<span style='color:#d2cd86; '>)</span>
@@ -47,7 +47,7 @@ categories: best_practices
 <p>ברוב המוחלט של הפעמים, אצטרך להעביר true, שכן אעבוד על דברים מעניינים, לכן אגדיר ערך ברירת מחדל:</p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_ <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<pre>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_ <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
 </pre></div>
 
 <p>כך לא אצטרך להגדיר כל פעם מחדש שאני עובד על משהו מעניין.</p>
@@ -75,7 +75,7 @@ categories: best_practices
     <li>בעיה נוספת היא שהביטוי הרגולרי פשוט לא נכון, לדוגמה, הוא לא יעלה על המקרה הבא:</li>
 </ul>
         <div style="direction:ltr" class="code">
-        <pre style='color:#d1d1d1;background:#000000;'><span style='color:#e66170; font-weight:bold; '>bool</span> notInteresting <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>false</span><span style='color:#b060b0; '>;</span>
+        <pre><span style='color:#e66170; font-weight:bold; '>bool</span> notInteresting <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>false</span><span style='color:#b060b0; '>;</span>
 Something very<span style='color:#d2cd86; '>(</span>notInteresting<span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
 </pre></div>
 
@@ -84,19 +84,19 @@ Something very<span style='color:#d2cd86; '>(</span>notInteresting<span style='c
 זה עוזר לנו בקטע מאוד חשוב, מתכנת כמעט תמיד יכתוב: </p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something interesting<span style='color:#b060b0; '>;</span>
+<pre>Something interesting<span style='color:#b060b0; '>;</span>
 </pre></div>
 
 <p>במקום לכתוב:</p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something interesting<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<pre>Something interesting<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
 </pre></div>
 
 <p>איגור יצא מגדרו, הוא ידע ישר מה לעשות. במקום להגדיר בנאי יחיד, יש להגדיר שני בנאים:</p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>:</span> isInteresting <span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span> <span style='color:#b060b0; '>}</span>
+<pre>Something<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>:</span> isInteresting <span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span> <span style='color:#b060b0; '>}</span>
 Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>:</span> isInteresting <span style='color:#d2cd86; '>(</span>isInteresting_<span style='color:#d2cd86; '>)</span> <span style='color:#b060b0; '>{</span> <span style='color:#b060b0; '>}</span>
 </pre></div>
 
@@ -111,7 +111,7 @@ Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-
 </ol>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_ <span style='color:#d2cd86; '>=</span> FileConfigurer<span style='color:#b060b0; '>::</span>GetDefaultInteresting<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<pre>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isInteresting_ <span style='color:#d2cd86; '>=</span> FileConfigurer<span style='color:#b060b0; '>::</span>GetDefaultInteresting<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
 </pre></div>
 
 <p style="padding-right:2em">עכשיו כל הקוראים צריכים להכיר את FileConfigurer ואת ה include שלו… זה לא דבר שהופך את איגור האומלל לשמח יותר, תשמחו עלי, ניסיתי.</p>
@@ -124,7 +124,7 @@ Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-
 <p>קצת בנושא פרמטרים מרובים, תחשבו על הפונקציה הבאה:</p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isExciting <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isWonderful <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isTasty <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isGr8 <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isLovely <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
+<pre>Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-weight:bold; '>bool</span> isExciting <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isWonderful <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isTasty <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isGr8 <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>,</span> <span style='color:#e66170; font-weight:bold; '>bool</span> isLovely <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
 </pre></div>
 
 <p>אני יודע מה עבר לכם בראש, זו פונקציה שהופכת את איגור לאומלל. אתם צודקים. (אגב, אתם צודקים גם מעוד סיבות, המחלקה הזו כנראה עוברת על Single Responsibility Principle)
@@ -136,7 +136,7 @@ Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-
 <p>הפתרון המוצע הוא להוסיף Parameter Object. במקרה שלנו, כך יראה הקוד (כולל שימושים)</p>
 
 <div style="direction:ltr">
-<pre style='color:#d1d1d1;background:#000000;'><span style='color:#e66170; font-weight:bold; '>class</span> Something
+<pre><span style='color:#e66170; font-weight:bold; '>class</span> Something
 <span style='color:#b060b0; '>{</span>
 <span style='color:#e66170; font-weight:bold; '>public</span><span style='color:#e34adc; '>:</span>
     <span style='color:#e66170; font-weight:bold; '>struct</span> Configurations
@@ -157,7 +157,7 @@ Something<span style='color:#d2cd86; '>(</span><span style='color:#e66170; font-
 <span style='color:#b060b0; '>}</span><span style='color:#b060b0; '>;</span>
 </pre>
 
-<pre style='color:#d1d1d1;background:#000000;'>Something withDefaults<span style='color:#b060b0; '>;</span>
+<pre>Something withDefaults<span style='color:#b060b0; '>;</span>
 
 Something<span style='color:#b060b0; '>::</span>Configurations myConf <span style='color:#d2cd86; '>=</span> Something<span style='color:#b060b0; '>::</span>getDefaultConfiguration<span style='color:#d2cd86; '>(</span><span style='color:#d2cd86; '>)</span><span style='color:#b060b0; '>;</span>
 myConf<span style='color:#d2cd86; '>.</span>isTasty <span style='color:#d2cd86; '>=</span> <span style='color:#e66170; font-weight:bold; '>true</span><span style='color:#b060b0; '>;</span>
