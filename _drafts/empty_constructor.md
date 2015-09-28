@@ -25,7 +25,14 @@ categories: c++_compilation
 <pre class="prettyprint"><code style="direction: ltr;">class MercedesCar
 {
 public:
-	MercedesCar (string a) {}
+	MercedesCar ()
+	{
+		model = "Motorwagen";
+		productionYear = 1886;
+		wheels = new HotSteelWheels[4];
+		radio = new FutureRadio();		
+		registerCarInDatabase();
+	}
 
 };</code></pre>
 
