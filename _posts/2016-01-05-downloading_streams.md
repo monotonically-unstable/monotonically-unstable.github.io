@@ -5,13 +5,15 @@ date:   2016-01-05 23:59:00
 categories: bash
 ---
 
-#Problem: watching lectures offline
+<a name="the-problem">[Problem: watching lectures offline](#the-problem)
+=======================================================
 
 So I had this problem of watching my university's lectures. It is really, really boring. To solve this, I was using a Firefox add-on and other software to fetch these streams and watch them on my phone while on the bus at 2x speed. 
 
 Recently, the (evil) university changed the streaming format and now the add-ons no longer work :(
 
-##Digging In
+<a name="digging-in">[Digging In](#digging-in)
+----------------------------------------------
 
 As I could not find any other tool for the job, I began doing research. 
 
@@ -29,7 +31,8 @@ Well... That 333 looks pretty... hmmm... Inviting; Maybe i should try fetching a
 
 That's pretty straightforward. Now how can i play it? Opening each file after another is not really possible. 
 
-###Take 1 -  ffmpeg and curl
+<a name="take1">[Take 1 -  ffmpeg and curl](#take1)
+----------------------------------------------
 
 Researching the subject i found [this question](http://stackoverflow.com/questions/7333232/concatenate-two-mp4-files-using-ffmpeg). 
 
@@ -50,7 +53,8 @@ Now the combined file just needed to be converted to another more comfortable fo
 
     ffmpeg -f concat -i fileList.txt -acodec copy -vcodec copy -bsf:a aac_adtstoasc all.mp4
 
-###Take 2 - Speeding things up
+<a name="take2">[Take 2 - Speeding things up](#take2)
+-----------------------------------------------------
 
 So using that script takes about 2 hours! That's way too long... Especially with my unstable computer. 
 
@@ -73,7 +77,8 @@ But this can be improved, let's make it configurable and split it into `N` parts
 
 Sounds like I'm reinventing the wheel here, which will obviously be invented again being "square-ish", which is not really what I'm after. 
 
-####`GNU-Parallel` to the rescue! 
+<a name="gnu-parallel">[`GNU-Parallel` to the rescue!](#gnu-parallel)
+
 [GNU-Parallel](http://www.gnu.org/software/parallel/) is a wickedly awesome tool that knows how to receive input like `xargs` only it can run the command on each input asynchronously and it's highly customizable. 
 
 So now i reduced the problem to running GNU-Parallel with the correct parameters, like so:
@@ -91,7 +96,8 @@ This now takes 15-20 minutes! That is more than 80% improvement.
 
 * The full scripts i will be linked at the bottom of the page.
 
-####Curling fails
+<a name="curl-fail">[Curling fails](#curl-fail)
+
 So after running this on a few videos I noticed that some of the files have the size `0 bytes`.  This could happen for example if curl fails (might be the server is down, no internet connection, etc). 
 
 Checking the return value of curl and weather the file size greater than 0 is good enough for most of the cases (100% of the cases i ran into), if the check fails we can just retry.
@@ -121,7 +127,9 @@ Using temporary files will later allow me to recover properly by allowing me to 
 
 * `curl` can be configured to retry every X seconds, or until a threshold is reached... but when I wrote this, I was testing `wget` too, so this helps toggling between the two more easily.
 
-###Take 3 -  Playlist 
+<a name="take3">[Take 3 -  Playlist](#take3)
+--------------------------------------------
+
 When trying to fetch other videos i noticed that they are of varying lengths. Trying to figure out how to do it automatically, I noticed that the player is trying to access the address `http://.../playlist.m3u8`
 It looked like this:
 
@@ -163,14 +171,17 @@ The chucklist can be loaded using VLC for example. That lead to parsing the chuc
 	
 `CHUNKS_ARRAY` will be passed as input to `GNU-parallel`
 
-####Wait, parsing? Why ?
+<a name="say-what-now">[Wait, parsing? Why ?](#say-what-now)
+
 So yeah, given the chucklist we can just load it using ffmpeg like this :
 
 	`ffmpeg -i http://.../chunklist_b400000.m3u8 -c copy i_am_complete.ts`
 
 So why the hell not do that? Well... It takes about 2 hours again because ffmpeg fetches the files sequentially. 
 
-###Take 4 - Recovery
+<a name="take4">[Take 4 - Recovery](#take4)
+--------------------------------------------
+
 There is an interesting additional benefit here to this design. I can easily check if the file had already been fetched properly in an earlier run. If the file exists, it does not need re-fetching. 
 
 	recover_needed_chunks()
@@ -189,7 +200,8 @@ There is an interesting additional benefit here to this design. I can easily che
 
 This means i can reboot the computer, disconnect from the Internet, etc and not waste precious time re-fetching the chunks. 
 
-##Wrapping things up
+<a name="wrapup">[Wrapping things up](#wrapup)
+==============================================
 
 You can find all the code here (TBD).  
 
