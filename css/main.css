@@ -253,7 +253,7 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
 /* Syntax highlighting styles */
 /* ----------------------------------------------------------*/
 
-.highlight  { background: #ffffff; }
+/* .highlight  { background: #ffffff; } */
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .highlight .k { font-weight: bold } /* Keyword */
