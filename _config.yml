@@ -10,3 +10,6 @@ github_username:  dorav
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+gems:
+  - jemoji
