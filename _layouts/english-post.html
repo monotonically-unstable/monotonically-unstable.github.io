@@ -1,5 +1,6 @@
 ---
 layout: default
+comments: true
 ---
 <div class="english-post">
 
@@ -11,5 +12,10 @@ layout: default
   <article class="english post-content" id="main_content">
   {{ content }}
   </article>
+
+  {% if page.comments %}
+  <script id="dsq-count-scr" src="//monotonically-unstable.disqus.com/count.js" async></script>
+  <div id="disqus_thread"></div>
+  {% endif %}
 
 </div>

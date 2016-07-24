@@ -3,6 +3,7 @@ layout: english-post
 title:  "Battling Encodings - Part 1"
 date:   2016-07-22 23:59:00
 categories: programming
+comments: true
 ---
 
 Encoding. One of these things you expect to be working like magic. While that might be a nice fantasy, in practice it's just the opposite; Encoding problems are great party poopers and they show up when you least expect them.

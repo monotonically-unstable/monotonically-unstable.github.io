@@ -3,6 +3,7 @@ layout: post
 title:  "Dependency Management In JavaScript"
 date:   2015-09-28 02:52:46
 categories: javascript
+comments: true
 ---
 
 <a name="the problem">[הבעיה - מודולריות](#the_problem)
@@ -43,8 +44,8 @@ document.getElementById('example')
 ~~~
 var Module = (function(public_api){
   var this_is_a_var = 3;
-  
-  public_api.getAVar = function() { return this_is_a_var } 
+
+  public_api.getAVar = function() { return this_is_a_var }
 
   return public_api;
 } (Module));
@@ -59,7 +60,7 @@ console.log(Module.getAVar());
 * **jquery** משתמשת בסימן $ עבור שם המודול
 * **underscore** משתמשת בסימן, ובכן - '_' עבור שם המודול שלה
 
-ניתן לקרוא עוד - [פה.](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html) 
+ניתן לקרוא עוד - [פה.](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
 
 הפתרון הזה מאפשר להפריד לקבצים ופותר יחסית לרמה טובה את בעית הזיבול של ה scope הגלובאלי, אבל עדיין מציקה לי העובדה שצריך להשתמש בתגיות `<script>` ויש תלות בסדר שלהן.
 
