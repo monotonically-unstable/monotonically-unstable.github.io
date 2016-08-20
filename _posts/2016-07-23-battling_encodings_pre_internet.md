@@ -73,8 +73,6 @@ That means that these encodings are compact and that any text written in English
 
 ---
 
-Nowadays, these Encodings are not as common as they used to be. Let's imagine that a French student wanted to speak to a German student (Yeah, like that would happen), one of them would see gibberish. This would happen because the ISO (and windows) standard family separates the world to different Encodings based on geographical locations.
+Nowadays, these Encodings are not as common as they used to be. Let's imagine that a French student wanted to speak to a German student (Yeah, like that would happen), one of them would see gibberish. This would happen because the ISO (and windows) standard families separate the world to different Encodings based on geographical locations.
 
-So this was all nice and dandy before the internet burst. In the next post I'll cover the modern approach for battling Encodings which solves that exact problem. We'll talk about Unicode, UTF-8, and how not... Emoji  
-
-This is it for this post. On the next post I'm going to cover the modern approach for battling Encoding with stuff like Unicode, UTF-8 and how not - Emoji :hankey: :+1:
+That being said, it was all nice and dandy before the internet burst. In the next post I'll cover the modern approach for battling Encodings which solves that exact problem. We'll talk about Unicode, UTF-8, and how not... Emoji :hankey: :+1:
