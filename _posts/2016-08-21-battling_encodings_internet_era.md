@@ -62,6 +62,6 @@ Both of these encodings provide a nice problem of "nullability". You could not s
 
 ----
 
-This was the second part of a three part blog post about Encoding. In the next post I'll cover some real world examples and techniques for handling encoding without loosing your frikin' mind.
+This was the second part of a three part blog post about Encoding. In the [next post]({% post_url 2016-09-11-battling_encodings_practical%}) I'll cover some real world examples and techniques for handling encoding without loosing your frikin' mind.
 
 If you enjoyed reading, let me know in a comment below. If you didn't enjoy reading you should also let me know in a comment below :)
