@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
 }
 
 .hebrew { direction: rtl }
-.hebrew { direction: ltr }
+.english { direction: ltr }
 
 .post-content
 {
@@ -339,6 +339,15 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
   }
 
 }
+
+img {
+  width: 100%
+}
+
+img.emoji {
+  width: 20px
+}
+
 
 @media screen and (max-width: 600px) {
 

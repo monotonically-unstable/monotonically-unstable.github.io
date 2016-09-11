@@ -55,10 +55,6 @@ header {
   -webkit-font-smoothing: antialiased;
 }
 
-img {
-  width: 100%
-}
-
 section img {
   max-width: 100%
 }
