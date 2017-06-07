@@ -107,9 +107,9 @@ dt {
   font-weight: bold;
 }
 
-ul li {
+/*ul li {
   list-style: none;
-}
+}*/
 
 .post ul li:before {
   content: ">> ";
