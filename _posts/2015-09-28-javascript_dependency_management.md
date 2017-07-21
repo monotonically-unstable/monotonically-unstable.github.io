@@ -4,6 +4,7 @@ title:  "Dependency Management In JavaScript"
 date:   2015-09-28 02:52:46
 categories: javascript
 comments: true
+author: "Dor Avraham"
 ---
 
 <a name="the problem">[הבעיה - מודולריות](#the_problem)

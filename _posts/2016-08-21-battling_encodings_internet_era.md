@@ -4,6 +4,7 @@ title:  "Battling Encodings - Part 2"
 date:   2016-08-19 23:59:00
 categories: programming
 comments: true
+author: "Dor Avraham"
 ---
 
 <a name="Title">[Encoding In The Modern Era](#Title)

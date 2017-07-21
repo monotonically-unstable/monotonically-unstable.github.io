@@ -4,6 +4,7 @@ title:  "My Logging Practices"
 date:   2017-05-23 22:11:16
 categories: programming logging
 comments: false
+author: "Dor Avraham"
 ---
 
 # My Logging practices

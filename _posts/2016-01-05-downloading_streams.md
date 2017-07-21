@@ -4,6 +4,7 @@ title:  "Donwloading video streams"
 date:   2016-01-05 23:59:00
 categories: bash
 comments: true
+author: "Dor Avraham"
 ---
 
 <a name="the-problem">[Problem: watching lectures offline](#the-problem)

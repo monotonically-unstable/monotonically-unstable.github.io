@@ -4,6 +4,7 @@ title:  "Battling Encodings - Part 3"
 date:   2016-09-10 23:59:00
 categories: programming
 comments: true
+author: "Dor Avraham"
 ---
 
 <a name="Title">[Encoding In The Real World](#Title)

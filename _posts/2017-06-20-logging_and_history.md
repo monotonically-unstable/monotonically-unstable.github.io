@@ -4,6 +4,7 @@ title:  "Logging And History"
 date:   2017-07-01 22:11:16
 categories: programming logging
 comments: false
+author: "Dor Avraham"
 ---
 
 # History of Logs

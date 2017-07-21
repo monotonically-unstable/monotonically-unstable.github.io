@@ -4,6 +4,7 @@ title:  "Methodical Code Reviews"
 date:   2017-03-03 22:11:16
 categories: programming
 comments: true
+author: "Dor Avraham"
 ---
 
 # Methodical Code Reviews
