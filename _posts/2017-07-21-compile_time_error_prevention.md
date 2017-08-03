@@ -153,6 +153,6 @@ You may also want to note the [boost units Library](http://www.boost.org/doc/lib
 
 This problem is not C++ specific, and it's actually more easy to solve (in my opinion) in C++ because of the strong template mechanism. I'd like to give you one last reference to the F# [units of measure Library](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/units-of-measure) which is pure awesomeness.
 
-> You could keep saying that it would not happen in your place of work, that it's an overkill, you could simply run more tests and get better developers who don't do such silly mistakes. You can tell [http://edition.cnn.com/TECH/space/9909/30/mars.metric.02/](that to Nasa who lost a spacecraft) worth 125 million dollars because of the wrong units.
+> You could keep saying that it would not happen in your place of work, that it's an overkill, you could simply run more tests and get better developers who don't do such silly mistakes. You can tell [that to Nasa who lost a spacecraft](http://edition.cnn.com/TECH/space/9909/30/mars.metric.02/) worth 125 million dollars because of the wrong units.
 
 To recap, I encourage you to use strong types whenever possible. This could save you a severe (need I remind you kittens being delivered to the wrong place?) production failure and a lot of headache during development. The example I gave for the Lat/Long implementation is simple and small enough that you can start using it today at small scale and migrate slowly with time.
