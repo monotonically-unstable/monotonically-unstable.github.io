@@ -61,21 +61,21 @@ Pretty straight forward. The code that used it was something along the lines of:
 
     ...
 
-HOLY SHIT.
+Congratulations if you spotted the error on first sight, we didn't.
 
 ---
 
 ## Discoveries
 
-To understand the implications of that simple mistake, you need to have context. We discovered it in a 20 years old legacy system in the navy.
-
-This piece of code was no joking matter. Once discovered the managers ordered a complete analysis of the code (20 years old code-base) and the developers discovered 33 mismatches of such.
+That single line of code would have had a literally devastating effect, it was discovered in a 20 years old military legacy system that... well, it does "stuff".
 
 > Thank god no kitty got to the wrong destination.
 
+This piece of code was no joking matter. Once discovered the managers ordered a complete analysis of the code (20 years old code-base) and the developers discovered 33 mismatches of such.
+
 The problem was not with the names nor was it with the documentation. The actual problem with that function was with the type-system.
 
-> There was another problem, and that was test coverage. But as that problem could also get repeated in the tests, I'm not satisfied with just better tests. I want the problem solved from the root.
+> There was another problem, and that was test coverage. But as that problem could also get repeated in the tests, I'm not satisfied with just better tests. I want the problem solved from the root. So maybe the type-system was only the solution?
 
 After realizing that the problem was not lat/long specific, we started seeing it in other places too. Meters got converted to yards, km/h to knots and other fallacies (even int to bool).
 
@@ -153,6 +153,6 @@ You may also want to note the [boost units Library](http://www.boost.org/doc/lib
 
 This problem is not C++ specific, and it's actually more easy to solve (in my opinion) in C++ because of the strong template mechanism. I'd like to give you one last reference to the F# [units of measure Library](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/units-of-measure) which is pure awesomeness.
 
-> TODO: write about ariana5 or other NASA events
+> You could keep saying that it would not happen in your place of work, that it's an overkill, you could simply run more tests and get better developers who don't do such silly mistakes. You can tell [http://edition.cnn.com/TECH/space/9909/30/mars.metric.02/](that to Nasa who lost a spacecraft) worth 125 million dollars because of the wrong units.
 
 To recap, I encourage you to use strong types whenever possible. This could save you a severe (need I remind you kittens being delivered to the wrong place?) production failure and a lot of headache during development. The example I gave for the Lat/Long implementation is simple and small enough that you can start using it today at small scale and migrate slowly with time.
